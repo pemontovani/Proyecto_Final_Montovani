@@ -5,7 +5,7 @@
 {% block ContenidoPrincipal %}
 
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+    <header class="masthead" style="background-image: url(../../media/{{blog.imagen}})">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -32,19 +32,18 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     {{blog.contenido}}
+                    {% if blog.user == user %}
+                        <a style="font-size: 1em; color: orange;" href="">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a style="font-size: 1em; color: Tomato;" href="">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        {% if blog.user == user %}
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7 text-center">
-                        <br></br>
-                        Editar - Eliminar
-                    </div>
-                </div>
-            </div>
-        {% endif %}
+        
     </article>   
 
 {% endblock %}

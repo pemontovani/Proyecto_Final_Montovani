@@ -32,7 +32,12 @@
                                 {{blog.fecha}}
 
                                 {% if blog.user == user %}
-                                    Editar - Eliminar
+                                    <a style="font-size: 1em; color: orange;" href="">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a style="font-size: 1em; color: Tomato;" href="">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
                                 {% endif %}
                             </p>
                         </div>
