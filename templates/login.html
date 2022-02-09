@@ -1,0 +1,50 @@
+{% extends "login_padre.html" %}
+
+{% load static %}
+
+{% block Imagen %}
+	<div class="wrap d-md-flex">
+		<div class="img" style="background-image: url({%static 'proyecto_final/assets/img/bg-1.jpg' %});">
+	</div>
+{% endblock %}
+
+{% block ContenidoPrincipal %}
+	<div class="d-flex">
+		<div class="w-100">
+			<h3 class="mb-4 text-center">Bienvenidos!!</h3>
+		</div>
+	</div>
+	{% if form.errors %}
+		<div class="alert alert-danger" role="alert">
+			Usuario o contraseña incorrecta, vuelva a intentarlo!
+		</div>
+	{% endif %}
+	
+	<form action="#" method="POST" class="signin-form">
+		{% csrf_token %}
+			<div class="form-group mb-3">
+				<label class="label" for="name">Username</label></br>
+				{% comment %} <input type="text" class="form-control" placeholder="Username" required> {% endcomment %}
+				{{ form.username }}
+			</div>
+			<div class="form-group mb-3">
+				<label class="label" for="password">Password</label></br>
+				{% comment %} <input type="password" class="form-control" placeholder="Password" required> {% endcomment %}
+				{{ form.password }}
+			</div>
+		<div class="form-group">
+			<button type="submit" class="form-control btn btn-primary rounded submit px-3">Iniciar Sesión</button>
+		</div>
+	</form>
+	<p class="text-center">No tienes cuenta? <a href="{% url 'registrar' %}">Registrate</a></p>
+	
+
+{% endblock %}
+
+
+{% block Titulo %}
+    Login
+{% endblock %}
+
+
+

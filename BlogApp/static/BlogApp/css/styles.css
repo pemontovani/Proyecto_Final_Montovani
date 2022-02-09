@@ -2962,10 +2962,10 @@ textarea.form-control-lg {
 .btn {
   display: inline-block;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.5;
   color: #212529;
-  text-align: center;
+  text-align: center; 
   vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;
@@ -2974,7 +2974,7 @@ textarea.form-control-lg {
           user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: 1rem 1.75rem;
+  padding: 1rem 1.25rem;
   font-size: 0.875rem;
   border-radius: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3000,11 +3000,13 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #0085A1;
   border-color: #0085A1;
+  border-radius: 10px;
 }
 .btn-primary:hover {
   color: #fff;
   background-color: #007189;
   border-color: #006a81;
+  border-radius: 10px;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
@@ -3888,6 +3890,7 @@ textarea.form-control-lg {
   color: #212529;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
     transition: none;
@@ -11074,8 +11077,15 @@ blockquote {
   #mainNav .navbar-nav > li.nav-item > a.nav-link {
     color: #fff;
   }
+  #mainNav .navbar-nav > li.nav-item > a.nav-link-user {
+    color: #A52A10 ;
+  }
   #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
     color: rgba(255, 255, 255, 0.8);
+  }
+
+  #mainNav .navbar-nav > li.nav-item > a.nav-link-user:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link-user:hover {
+    color: #A52A10 ;
   }
 }
 @media (min-width: 992px) {
@@ -11113,8 +11123,8 @@ blockquote {
 }
 
 footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 header.masthead {
@@ -11183,6 +11193,7 @@ header.masthead .post-heading .meta {
 header.masthead .post-heading .meta a {
   color: #fff;
 }
+
 @media (min-width: 992px) {
   header.masthead {
     padding-top: 12.5rem;

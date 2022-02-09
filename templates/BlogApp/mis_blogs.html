@@ -1,0 +1,82 @@
+{% extends "BlogApp/padre.html" %}
+
+{% load static %}
+
+{% block ContenidoPrincipal %}
+
+    <header class="masthead" style="background-image: url('{%static 'BlogApp/assets/img/home-bg.jpg' %}')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Mis Blogs</h1>
+                        <span class="subheading">Todo el contenido escrito en la página</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+         <!-- Main Content-->
+         <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    {% if not blogs %}
+                        <div class="alert alert-danger" role="alert">
+                            No existen entradas en el blog.
+                        </div>  
+                    {% else %}
+                        {% for blog in blogs %}
+                            <div class="post-preview">
+                                <a href="{% url 'blog_ver' blog.id %}">
+                                    <h2 class="post-title">{{blog.titulo}}</h2>
+                                    <h3 class="post-subtitle">{{blog.subtitulo}}</h3>
+                                </a>
+                                <p class="post-meta">
+                                    Escrito por
+                                    {% if blog.user.last_name %}
+                                        <a>{{blog.user.first_name}} {{blog.user.last_name}}</a>
+                                    {% else %}
+                                        <a>{{blog.user}}</a>
+                                    {% endif %}
+                                    {{blog.fecha}}
+    
+                                    {% if blog.user == user %}
+                                        Editar - Eliminar
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <!-- Divider-->
+                            <hr class="my-4" />
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if is_paginated %}
+                    <div style="text-align: right;">
+                    {% if page_obj.has_previous %}
+                    <a href="{% url 'inicio' %}?page={{ page_obj.previous_page_number }}">
+                            Anterior</a>
+                    {% endif %}
+                        <!-- current page -->
+                            Páginas {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                        <!-- end current page -->
+                    {% if page_obj.has_next %}
+                    <a href="{% url 'inicio' %}?page={{ page_obj.next_page_number }}">
+                            Siguiente</a>
+                    {% endif %}
+                    </div>
+                {% endif %}
+    
+                    {% comment %} <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block Titulo %}
+    Inicio
+{% endblock %}
+
+

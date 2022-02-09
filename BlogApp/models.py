@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Blog(Model):
     titulo= CharField(max_length=50)
     subtitulo= CharField(max_length=50)
-    autor= CharField(max_length=50)
+    user = ForeignKey(User, on_delete=CASCADE)
     fecha= DateField()
     contenido= CharField(max_length=1000)
     imagen= ImageField(upload_to='imagenes', null=True, blank=True)

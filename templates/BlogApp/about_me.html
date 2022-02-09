@@ -1,0 +1,39 @@
+{% extends "BlogApp/padre.html" %}
+
+{% load static %}
+
+{% block ContenidoPrincipal %}
+
+    <header class="masthead" style="background-image: url('{%static 'BlogApp/assets/img/about-bg.jpg' %}')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1> Sobre mi</h1>
+                        <span class="subheading">La persona que creo esta pagina ;) </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p>¡Hola! Soy Pablo Montovani, desarrollador de esta página donde la idea detrás es hacer un pequeño blog colaborativo donde usuarios que se conecten a la pagina puedan subir diversos posts (blogs usando la terminología bloggera) contando reflexiones, anécdotas o desvaríos sobre su vida.</p>
+                    <p>Aunque esto realmente es un proyecto final para el curso de Python en CoderHouse cuya consigna es realizar en este lenguaje usando el framework Django una pagina muy parecida a un blog. </p>
+                    <p>¿Pero esta página no iba a hablar sobre mí? Cierto, acá voy: nuevamente me presento, Soy Pablo Montovani. Vivo en Rio Cuarto, provincia de Córdoba. Soy recibido de analista de sistema y actualmente trabajo en una empresa local de desarrollo de software. Tengo 35 años y soy aficionado a la cultura pop, principalmente al cine y los videojuegos. Además, tengo pánico a las abejas y a las arañas, mi comida favorita es la tortilla de papa y mi Pokemon preferido es Pikachu, obvio. (creo que esta última línea está de más)</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block Titulo %}
+    Sobre mi
+{% endblock %}
+
+
