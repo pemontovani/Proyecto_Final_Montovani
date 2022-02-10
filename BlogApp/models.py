@@ -12,7 +12,11 @@ class Blog(Model):
     contenido= CharField(max_length=1000)
     imagen= ImageField(upload_to='imagenes', null=True, blank=True)
     
-class Avatar(Model):
+    class Meta:
+       ordering = ['-fecha']
+    
+class Bio(Model):
     user = ForeignKey(User, on_delete=CASCADE)
+    biografia = CharField(max_length=1000)
     imagen = ImageField(upload_to='avatares', null=True, blank=True)
 

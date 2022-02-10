@@ -32,10 +32,10 @@
                                 {{blog.fecha}}
 
                                 {% if blog.user == user %}
-                                    <a style="font-size: 1em; color: orange;" href="">
+                                    <a style="font-size: 1em; color: orange;" href="{% url 'blog_update' blog.id %}">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <a style="font-size: 1em; color: Tomato;" href="">
+                                    <a style="font-size: 1em; color: Tomato;" href="{% url 'blog_delete' blog.id %}">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 {% endif %}

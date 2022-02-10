@@ -29,9 +29,9 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'inicio' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'mis_blogs' %}">Mis Blogs</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Crear Blog</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog_add' %}">Nuevo Blog</a></li>
                         {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link nav-link-user px-lg-3 py-3 py-lg-4" href="">Hola, {{user.username}}!</a></li>
+                            <li class="nav-item"><a class="nav-link nav-link-user px-lg-3 py-3 py-lg-4" href="{% url 'profile' %}">Hola, {{user.username}}!</a></li>
                             <a class="btn btn-primary" href="{% url 'logout' %}">CERRAR SESIÓN</a>
                         {% endif %}
                     </ul>
