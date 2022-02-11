@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView, LoginView 
-from proyecto_final.views import UserCreateView
+from proyecto_final.views import UserCreateView 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,3 +31,5 @@ urlpatterns = [
 
 #imagenes
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = "proyecto_final.views.page_not_found_view"

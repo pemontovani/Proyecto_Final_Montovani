@@ -17,65 +17,40 @@
         </div>
     </header>
 
-         <!-- Main Content-->
-         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <!-- Post preview-->
-                    {% if not blogs %}
-                        <div class="alert alert-danger" role="alert">
-                            No existen entradas en el blog.
-                        </div>  
-                    {% else %}
-                        {% for blog in blogs %}
-                            <div class="post-preview">
-                                <a href="{% url 'blog_ver' blog.id %}">
-                                    <h2 class="post-title">{{blog.titulo}}</h2>
-                                    <h3 class="post-subtitle">{{blog.subtitulo}}</h3>
-                                </a>
-                                <p class="post-meta">
-                                    Escrito por
-                                    {% if blog.user.last_name %}
-                                        <a>{{blog.user.first_name}} {{blog.user.last_name}}</a>
-                                    {% else %}
-                                        <a>{{blog.user}}</a>
-                                    {% endif %}
-                                    {{blog.fecha}}
-    
-                                    {% if blog.user == user %}
-                                        <a style="font-size: 1em; color: orange;" href="{% url 'blog_update' blog.id %}">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                        <a style="font-size: 1em; color: Tomato;" href="{% url 'blog_delete' blog.id %}">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    {% endif %}
-                                </p>
-                            </div>
-                            <!-- Divider-->
-                            <hr class="my-4" />
-                        {% endfor %}
-                    {% endif %}
-
-                    {% if is_paginated %}
-                    <div style="text-align: right;">
-                    {% if page_obj.has_previous %}
-                    <a href="{% url 'inicio' %}?page={{ page_obj.previous_page_number }}">
-                            Anterior</a>
-                    {% endif %}
-                        <!-- current page -->
-                            Páginas {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-                        <!-- end current page -->
-                    {% if page_obj.has_next %}
-                    <a href="{% url 'inicio' %}?page={{ page_obj.next_page_number }}">
-                            Siguiente</a>
-                    {% endif %}
-                    </div>
-                {% endif %}
-    
-                    {% comment %} <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div> {% endcomment %}
+        <div class="row my-3 p-3">
+            <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
+        </div>
+        {% if profile_form.errors %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <div id="form_errors">
+                    {% for key, value in user_form.errors.items %}
+                        <strong>{{ value }}</strong>
+                    {% endfor %}
                 </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+        {% endif %}
+        <div class="form-content">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ bio.avatar }}
+                <div class="form-row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="small mb-1">Username:</label>
+                                {{ user_form.username }}
+                            <label class="small mb-1">Email:</label>
+                                {{ user_form.email }}
+                        </div>
+                        <label class="small mb-1">Bio:</label> {{ profile_form.biografia }}
+                    </div>
+                </div>
+                <br><br>
+                <button type="submit" class="btn btn-dark btn-lg">Guardar Cambios</button>
+                <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+            </form>
         </div>
 
 {% endblock %}

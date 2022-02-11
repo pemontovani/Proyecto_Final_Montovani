@@ -3,19 +3,6 @@ from django.contrib.auth.models import User
 from django.forms import BooleanField, EmailField, CharField, PasswordInput, ModelForm, ImageField, FileInput, Textarea, TextInput
 from BlogApp.models import Bio
 
-
-class UserRegisterForm(UserCreationForm):
-
-    email = EmailField()
-    password1 = CharField(label='Contraseña', widget=PasswordInput)
-    password2 = CharField(label='Repetir Contraseña', widget=PasswordInput)
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
-        help_texts = {k:'' for k in fields}
-
-
 class UserEditForm(UserCreationForm):
     email = EmailField()
     password1 = CharField(label='Contraseña', widget=PasswordInput)
@@ -41,9 +28,8 @@ class UpdateUserForm(ModelForm):
         fields = ['username', 'email']
         
 class UpdateProfileForm(ModelForm):
-    imagen = ImageField(widget=FileInput(attrs={'class': 'form-control-file'}))
     biografia = CharField(widget=Textarea(attrs={'class': 'form-control', 'rows': 5}))
 
     class Meta:
         model = Bio
-        fields = ['biografia', 'imagen'] 
+        fields = ['biografia']

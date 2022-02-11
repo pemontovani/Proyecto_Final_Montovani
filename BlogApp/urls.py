@@ -1,7 +1,7 @@
 import imp
 from django.urls import path
 
-from BlogApp.views import inicio, about_me, BlogListView, BlogDetailView, BlogUserView, BlogMyView, BlogCreateView, BlogUpdateView, BlogDeleteView
+from BlogApp.views import inicio, about_me, BlogListView, BlogDetailView, BlogUserView, BlogMyView, BlogCreateView, BlogUpdateView, BlogDeleteView, profile
 
 urlpatterns = [
    
@@ -12,6 +12,6 @@ urlpatterns = [
     path('Blog/ver/<pk>', BlogDetailView.as_view(), name='blog_ver'),
     path('Blog/editar/<pk>', BlogUpdateView.as_view(), name='blog_update'),
     path('Blog/eliminar/<pk>', BlogDeleteView.as_view(), name='blog_delete'),
-    path('Profile', BlogDeleteView.as_view(), name="profile"),
+    path('Profile', profile, name="profile"),
     path('aboutme', about_me, name="about_me"),
 ]
