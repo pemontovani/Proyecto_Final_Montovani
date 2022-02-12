@@ -1,16 +1,61 @@
-{% extends 'BlogApp/padre.html' %}
+{% extends "BlogApp/padre.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
 
 {% block ContenidoPrincipal %}
-    <form action="" method="POST">
-        {% csrf_token %}
 
-        <ul>
-            <li>Nombre: {{profesor.nombre}}</li>
-            <li>Apellido: {{profesor.apellido}}</li>
-            <li>Email: {{profesor.email}}</li>
-            <li>Profesión: {{profesor.profesion}}</li>
-        </ul>
+    <header class="masthead" style="background-image: url('{%static 'BlogApp/assets/img/home-bg.jpg' %}')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Editar Blog</h1>
+                        <span class="subheading">Las obras maestras tambien se corrigen...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        {% if profile_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
 
-        <input type="submit" value="Borrar">
-    </form>
+         <!-- Main Content-->
+         <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="form-content">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="alert alert-danger" role="alert">
+                                <p>Esta a punto de borrar la publicación en el blog titulada: </p>
+                                <p class="text-center">"{{object.titulo }}"</p>
+                            </div>
+                            <br><br>
+                            <button type="submit" class="btn btn-success">Eliminar Blog</button>
+                        </form>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <br></br>
+        </div>
+
 {% endblock %}
+
+{% block Titulo %}
+    Eliminar Blog
+{% endblock %}
+
+
