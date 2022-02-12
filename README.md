@@ -17,15 +17,34 @@ El repositorio donde se encuentra alojado este proyecto es https://github.com/pe
 
 ## Paginas que componen la web
 
-* Login (/login)
-* Logout (/logout)
-* Registro (/registrar)
-* Inicio - lista de blogs (/)
-* Mis blogs (/MisBlogs)
-* Nuevo Blog (/Blog/Nuevo)
-* Editar Blog (/Blog/Editar/<id>)
-* Eliminar Blog (/Blog/Eliminar/<id>
-* Profile (/Profile)
+* **Login (/login)**
+Página para acceder al sistema a través de usuario y contraseña.
+
+* **Logout (/logout)**
+Página para salir de la web.
+
+* **Registro (/registrar)**
+Página para poder registrarse a la base de datos de usuario de la web.
+
+* **Inicio - lista de blogs (/)**
+Página inicial al acceder a la web y lugar donde se pueden visualizar todas las publicaciones de los usuario ordenadas por fecha y ordenada a través de una paginación.
+
+* **Mis blogs (/MisBlogs)**
+Página donde se puede ver una lista de blogs publicados por el usuario logeado.
+
+* **Nuevo Blog (/Blog/Nuevo)**
+Página que permite a través de un formulario crear una nueva publicación en el blog.
+
+* **Editar Blog (/Blog/Editar/<id>)**
+Página que permite editar un blog ya publicado por el usuario.
+  
+* **Eliminar Blog (/Blog/Eliminar/<id>)**
+Página que permite editar un blog ya publicado por el usuario.
+  
+* **Profile (/Profile)**
+Página que permite modificar los datos del usuario y escribir una pequeña biografia personal.
+  
+* **Sobre mi (/aboutme)**
 
 ## Tutorial de uso de la web
 
