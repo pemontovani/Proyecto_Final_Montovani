@@ -45,6 +45,7 @@ Página que permite editar un blog ya publicado por el usuario.
 Página que permite modificar los datos del usuario y escribir una pequeña biografia personal.
   
 * **Sobre mi (/aboutme)**
+Página que cuenta un poco quien es la persona encargada de desarrollar la web.
 
 ## Tutorial de uso de la web
 
