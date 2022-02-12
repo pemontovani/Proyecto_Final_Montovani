@@ -49,6 +49,7 @@ class BlogMyView(LoginRequiredMixin, ListView):
 class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     success_url = reverse_lazy('inicio')
+    form_class = UpdateBlogForm 
     template_name = 'BlogApp/nuevo_blog.html'
     
     def get_initial(self):

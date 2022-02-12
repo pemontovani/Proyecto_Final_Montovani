@@ -44,3 +44,7 @@ class UpdateBlogForm(ModelForm):
     class Meta:
           model = Blog
           fields = ['titulo','subtitulo','fecha','contenido','imagen']
+    
+    def __init__(self, *args, **kwargs):
+        super(UpdateBlogForm, self).__init__(*args, **kwargs)
+        self.fields['contenido'].error_messages = {'required': 'Contenido del blog es requerido'}

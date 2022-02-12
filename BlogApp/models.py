@@ -13,7 +13,7 @@ class Blog(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     fecha= DateField()
     contenido= RichTextField()
-    imagen= ImageField(upload_to='imagenes', null=True, blank=True)
+    imagen= ImageField(upload_to='imagenes', null=True, blank=False)
     
     class Meta:
        ordering = ['-fecha']
