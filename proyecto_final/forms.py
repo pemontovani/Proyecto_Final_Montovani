@@ -29,21 +29,4 @@ class UserEditForm(UserCreationForm):
         fields = ['email', 'password1', 'password2', 'first_name', 'last_name', 'is_staff']
         help_texts = {k:'' for k in fields}
         
-class UpdateUserForm(ModelForm):
-    username = CharField(max_length=100,
-                               required=True,
-                               widget=TextInput(attrs={'class': 'form-control'}))
-    email = EmailField(required=True,
-                             widget=TextInput(attrs={'class': 'form-control'}))
-
-    class Meta:
-        model = User
-        fields = ['username', 'email']
         
-class UpdateProfileForm(ModelForm):
-    imagen = ImageField(widget=FileInput(attrs={'class': 'form-control-file'}))
-    biografia = CharField(widget=Textarea(attrs={'class': 'form-control', 'rows': 5}))
-
-    class Meta:
-        model = Bio
-        fields = ['biografia', 'imagen'] 

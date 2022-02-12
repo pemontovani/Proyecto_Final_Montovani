@@ -1,6 +1,7 @@
 {% extends "BlogApp/padre.html" %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block ContenidoPrincipal %}
 
@@ -17,41 +18,55 @@
         </div>
     </header>
 
-        <div class="row my-3 p-3">
-            <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
-        </div>
-        {% if profile_form.errors %}
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <div id="form_errors">
-                    {% for key, value in user_form.errors.items %}
-                        <strong>{{ value }}</strong>
-                    {% endfor %}
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        {% endif %}
-        <div class="form-content">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ bio.avatar }}
-                <div class="form-row">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label class="small mb-1">Username:</label>
-                                {{ user_form.username }}
-                            <label class="small mb-1">Email:</label>
-                                {{ user_form.email }}
+        
+         <!-- Main Content-->
+         <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% if profile_form.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <div id="form_errors">
+                            {% for key, value in user_form.errors.items %}
+                                <strong>{{ value }}</strong>
+                            {% endfor %}
                         </div>
-                        <label class="small mb-1">Bio:</label> {{ profile_form.biografia }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    {% endif %}
+
+                    <div class="form-content">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="small m-2">Username:</label>
+                                            {{ user_form.username }}
+                                        <label class="small m-2">Email:</label>
+                                            {{ user_form.email }}
+                                        <label class="small m-1">Nombre:</label>
+                                            {{ user_form.first_name }}
+                                        <label class="small m-1">Apellido:</label>
+                                            {{ user_form.last_name }}
+                                    </div>
+                                    <label class="small mb-1">Biografía:</label> {{ profile_form.biografia }}
+                                </div>
+                            </div>
+                            <br><br>
+                            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                        </form>
+                    </div>                                                                          
                 </div>
-                <br><br>
-                <button type="submit" class="btn btn-dark btn-lg">Guardar Cambios</button>
-                <button type="reset" class="btn btn-dark btn-lg">Reset</button>
-            </form>
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <br></br>
+                </div>
+            </div>
         </div>
+
+        
 
 {% endblock %}
 

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView,DeleteView
 from django.contrib.auth.decorators import login_required
-from BlogApp.forms import UpdateUserForm, UpdateProfileForm
+from BlogApp.forms import UpdateUserForm, UpdateProfileForm, UpdateBlogForm
 
 # Create your views here.
 
@@ -49,7 +49,6 @@ class BlogMyView(LoginRequiredMixin, ListView):
 class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     success_url = reverse_lazy('inicio')
-    fields = ['titulo', 'subtitulo', 'fecha', 'contenido','imagen']
     template_name = 'BlogApp/nuevo_blog.html'
     
     def get_initial(self):
@@ -61,12 +60,16 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
       form.instance.user = self.request.user
       return super(BlogCreateView, self).form_valid(form)
+  
+    def get(self, request):
+        form = UpdateBlogForm()
+        return render(request, 'BlogApp/nuevo_blog.html', {'form':form})
 
 class BlogUpdateView(LoginRequiredMixin, UpdateView):
     model = Blog
     success_url = reverse_lazy('inicio')
-    fields = ['titulo', 'subtitulo', 'fecha', 'contenido','imagen']
     template_name = 'BlogApp/editar_blog.html'
+    form_class = UpdateBlogForm
     
 class BlogDeleteView(LoginRequiredMixin, DeleteView):
     model = Blog

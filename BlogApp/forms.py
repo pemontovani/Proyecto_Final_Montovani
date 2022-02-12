@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import BooleanField, EmailField, CharField, PasswordInput, ModelForm, ImageField, FileInput, Textarea, TextInput
-from BlogApp.models import Bio
+from BlogApp.models import Bio, Blog
+from ckeditor.fields import RichTextField
 
 class UserEditForm(UserCreationForm):
     email = EmailField()
@@ -22,14 +23,24 @@ class UpdateUserForm(ModelForm):
                                widget=TextInput(attrs={'class': 'form-control'}))
     email = EmailField(required=True,
                              widget=TextInput(attrs={'class': 'form-control'}))
+    first_name = CharField(max_length=100,
+                             widget=TextInput(attrs={'class': 'form-control'}))
+    last_name = CharField(max_length=100,
+                             widget=TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'email','first_name','last_name']
         
 class UpdateProfileForm(ModelForm):
-    biografia = CharField(widget=Textarea(attrs={'class': 'form-control', 'rows': 5}))
+    biografia = CharField(widget=Textarea(attrs={'class': 'form-control', 'rows': 10}))
 
     class Meta:
         model = Bio
-        fields = ['biografia']
+        fields = ['biografia'] 
+        
+class UpdateBlogForm(ModelForm):
+    contenido = RichTextField()
+    class Meta:
+          model = Blog
+          fields = ['titulo','subtitulo','fecha','contenido','imagen']

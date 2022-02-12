@@ -1,6 +1,7 @@
 {% extends "BlogApp/padre.html" %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block ContenidoPrincipal %}
 
@@ -16,6 +17,18 @@
             </div>
         </div>
     </header>
+        {% if profile_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
 
          <!-- Main Content-->
          <div class="container px-4 px-lg-5">
@@ -24,19 +37,38 @@
                     {% if form.errors %}
                     <p style="color: red;">{{ form.errors }}</p>
                     {% endif %}
+                    
 
-
-                    <form action="" method="POST">
-                    {% csrf_token %}
-
-                    <table>
-                        {{ form.as_table }}
-                    </table>
-
-                    <input type="submit" value="Enviar">
-                    </form>
+                    <div class="form-content">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="small m-2">Título:</label>
+                                            {% render_field form.titulo class="form-control" %}   
+                                        <label class="small m-2">Subtítulo:</label>
+                                            {% render_field form.subtitulo class="form-control" %}
+                                        <label class="small m-1">Fecha:</label>
+                                            {% render_field form.fecha type="date" class="form-control" %} 
+                                        <label class="small m-1">Contenido:</label>
+                                            {% render_field form.contenido class="form-control" %} 
+                                            {{ form.media }} 
+                                        <label class="small m-1">Imagen:</label>
+                                            {% render_field form.imagen class="form-control" %} 
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                        </form>
+                    </div> 
                 </div>
             </div>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <br></br>
         </div>
 
 {% endblock %}
