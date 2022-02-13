@@ -49,7 +49,7 @@ Página que cuenta un poco quien es la persona encargada de desarrollar la web.
 
 ## Tutorial de uso de la web
 
-Se puede ver el video en la siguiente direccion: xxxx, que ilustra el uso general de la pagina web.
+Se puede ver el video en la siguiente direccion: https://www.youtube.com/watch?v=dfKHlk5Nc40, que ilustra el uso general de la pagina web.
 
 
 ## Autor ✒️
